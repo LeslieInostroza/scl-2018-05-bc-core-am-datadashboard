@@ -78,7 +78,7 @@ window.computeUsersStats = (users, progress, courses) => {
       exercises: {
         total: exercises,
         completed: exercisesCompleted,
-        percent: percentExercise
+        percent: percentExercises
       },
     };
     console.log(alumnas);
@@ -91,19 +91,18 @@ window.sortUsers = (users, orderBy, orderDirection) => {
   if (orderBy === 'name') {
     return users.sort(function(a, b) {
       if (orderDirection == 'ASC') {
-        return a.name.localCompare(b.name);
+        return a.name.localeCompare(b.name);
       } else {
-        return a.name.localCompare(b.name) * -1;
+        return a.name.localeCompare(b.name) * -1;
       }
     });
   }
-
-  if (orderBy === 'percent') {
+  if (orderBy === 'percentTotal') {
     return users.sort(function(a, b) {
       if (orderDirection == 'ASC') {
-        return a.stats.percent - b.stats.percent;
+        return a.stats.percentTotal - b.stats.percentTotal;
       } else {
-        return (a.stats.percent - b.stats.percent) * -1;
+        return (a.stats.percentTotal - b.stats.percentTotal) * -1;
       }
     });
   }

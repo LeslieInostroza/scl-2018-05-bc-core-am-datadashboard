@@ -58,12 +58,12 @@
           <!--div con menu de ordenar / filtrar y buscar bootstrap-->
           <div class="row dropdown filter">
             <div class="col-sm-6 dropright">
-              <button class="btn btn-secondary dropdown-toggle filtro" type="button" id="dropdownMenuButton" onclick ="onToggleSort()"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="btn btn-secondary dropdown-toggle filtro" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  Filtrar
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a  class="dropdown-item">Orden Alfabético</a>
-                <a class="dropdown-item" href="#">Orden Completitud</a>
+                <a  class="dropdown-item" id = "filterName" onclick="onToggleSortName()">Orden Alfabético</a>
+                <a class="dropdown-item" onclick ="onToggleSort()" id ="filterCOmpletitud"href="#">Orden Completitud</a>
               </div>
             </div>   
             <div class="col-sm-6">
