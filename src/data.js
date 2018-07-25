@@ -81,7 +81,6 @@ window.computeUsersStats = (users, progress, courses) => {
         percent: percentExercises
       },
     };
-    console.log(alumnas);
     return users;
   });
 };
@@ -89,20 +88,21 @@ window.computeUsersStats = (users, progress, courses) => {
 
 window.sortUsers = (users, orderBy, orderDirection) => {
   if (orderBy === 'name') {
-    return users.sort(function(a, b) {
-      if (orderDirection == 'ASC') {
-        return a.name.localeCompare(b.name);
+    return users.sort((first, second) => {
+      if (orderDirection === 'ASC') {
+        return first.name.localeCompare(second.name);
       } else {
-        return a.name.localeCompare(b.name) * -1;
+        return first.name.localeCompare(second.name) * -1;
       }
     });
   }
+
   if (orderBy === 'percentTotal') {
-    return users.sort(function(a, b) {
-      if (orderDirection == 'ASC') {
-        return a.stats.percentTotal - b.stats.percentTotal;
+    return users.sort((first, second) => {
+      if (orderDirection === 'ASC') {
+        return first.stats.percentTotal - second.stats.percentTotal;
       } else {
-        return (a.stats.percentTotal - b.stats.percentTotal) * -1;
+        return (first.stats.percentTotal - second.stats.percentTotal) * -1;
       }
     });
   }

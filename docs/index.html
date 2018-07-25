@@ -1,106 +1,114 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Dashboard</title>
-    <!-- Link brootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <!-- Link fuentes -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <!-- Link style -->
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <!-- Container -->
-    <div class="container-fluid">
-      <!-- col header -->
-      <header class="row">
-        <!-- Logo Laboratoria  -->
-        <div class = "col-sm-3 logo">
-            <picture>
-              <img src="../docs/img/logo_laboratoria.png" class="img-fluid lab" alt="logo">
-            </picture>
-        </div>  
-        <div class="col-sm-9 title">
-            <h1>DATA DASHBOARD</h1>
-        </div> 
-      </header> <!-- fin col de header -->      
-      <div class="row"> <!-- col de la estructura -->
-        <aside class="col-sm-3 menu sticky-top">
-          <!-- aqui va usuario  -->
-          <div class="row">
-            <div class="col-3">
-              <picture>
-                <img src="../docs/img/no-user.png" alt="user" class="img user">
-              </picture>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Dashboard</title>
+  <!-- Link brootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <!-- Link fuentes -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  <!-- Link style -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Barra Navegacion -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand title col-s-10" href="#">
+      <p>Data Dashboard</p>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item liNav">
+          <button class="btn btn-sucess cohort" type="button">
+            LIMA
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="row">
+    <aside class="col-sm-3 menu sticky-top">
+      <!-- aqui va usuario  -->
+      <div class="row">
+        <div class="col-3">
+          <picture>
+            <img src="../src/img/no-user.png" alt="user" class="img user">
+          </picture>
+        </div>
+        <div class="col-9 mail-content">
+          <h5>Training Manager
+            <span class="mail">tm@laboratoria.cl</span>
+          </h5>
+        </div>
+      </div>
+      <!-- menu desplegable de cohorts sacar de bootstrap -->
+      <div class="row">
+        <div class="col-sm-12 cohort">
+          <h5>LIMA</h5>
+        </div>
+      </div>
+    </aside>
+    <section id="gifLoad">
+      <img src="img/gif-load.gif" alt="gif-load">
+    </section>
+    <div class="col-sm-9" id="contData">
+      <!--contenido de data-->
+      <!--div con menu de ordenar / filtrar y buscar bootstrap-->
+      <div class="dropdown cont-search">
+        <form class="form-inline ">
+          <input class="form-control mr-sm-2 search" type="search" onkeyup="searchStudents()" id="searchAlumnas" placeholder="Buscar Alumna"
+            aria-label="Search">
+          <div class="dropright">
+            <button class="btn btn-secondary dropdown-toggle filter" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Filtrar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" id="filterName" onclick="onToggleSortName()">Orden Alfabético</a>
+              <a class="dropdown-item" onclick="onToggleSort()" id="filterCOmpletitud" href="#">Orden Completitud</a>
             </div>
-            <div class="col-9">
-              <h5>Training Manager tm@laboratoria.cl</h5>
-            </div>
-          </div>  
-          <!-- menu desplegable de cohorts sacar de bootstrap -->
-          <div class="row">
-              <div class="dropdown col-sm-12 cohort">             
-                 <button class="btn btn-sucess dropdown-toggle cohort" type="button" id="dropdownMenuEnlace" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  COHORTS
-                 </button>   
-                   <!-- enlace 'a' con id, para darle funcionalidad -->
-                   <div class="dropdown-menu cohort" id="menuCohort" aria-labelledby="dropdownMenuEnlace" aria-expanded="true">
-                 
-                <!-- espacio -->
-                 </div>
-                 
-               </div>
-           </div>
-          </aside>
-        <section class="col-sm-9" id="contData"> <!--contenido de data-->
-          <!--div con menu de ordenar / filtrar y buscar bootstrap-->
-          <div class="row dropdown filter">
-            <div class="col-sm-6 dropright">
-              <button class="btn btn-secondary dropdown-toggle filtro" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Filtrar
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Orden Alfabético</a>
-                <a class="dropdown-item" href="#">Orden Completitud</a>
-              </div>
-            </div>   
-            <div class="col-sm-6">
-              <form class="form-inline ">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar Alumna" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0 filtro" type="submit">Buscar</button>
-              </form>
-            </div>  
           </div>
-          <div id="loading">Cargando...</div>
-          <article id="ranking" class="studentList row">
-            <table id="studentsRanking" class="table col-sm-12 table-responsive-sm table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Progreso %</th>
-                  <th scope="col">Lecturas Completadas</th>
-                  <th scope="col">Lecturas %</th>
-                  <th scope="col">Ejercicios Completados</th>
-                  <th scope="col">Ejercicios %</th>
-                  <th scope="col">Quizzes Completados</th>
-                  <th scope="col">Quizzes %</th>
-                  <th scope="col">Score</th>
-                  <th scope="col">Score %</th>
-                </tr>
-              </thead>
-              <tbody id="studentsName"></tbody>
-            </table>
-          </article>
-        </section>  <!-- fin col de la estructura -->
-    </div> <!-- Fin container -->  
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <!-- Link main -->
-    <script src="main.js"></script>
-    <script src="data.js"></script>
-  </body>
+        </form>
+      </div>
+      <article id="ranking" class="studentList row">
+        <table id="studentsRanking" class="table col-sm-12 table-responsive-sm table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Progreso %</th>
+              <th scope="col">Lecturas Completadas</th>
+              <th scope="col">Lecturas %</th>
+              <th scope="col">Ejercicios Completados</th>
+              <th scope="col">Ejercicios %</th>
+              <th scope="col">Quizzes Completados</th>
+              <th scope="col">Quizzes %</th>
+            </tr>
+          </thead>
+          <tbody id="studentsName"></tbody>
+        </table>
+      </article>
+    </div>
+    <!-- fin col de la estructura -->
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <!-- Link main -->
+  <script src="main.js"></script>
+  <script src="data.js"></script>
+</body>
 </html>
